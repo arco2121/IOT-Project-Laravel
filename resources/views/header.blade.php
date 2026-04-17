@@ -5,11 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     <meta name="params" content="{{ json_encode($params) }}">
-    @vite(['resources/js/bridge.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/'. $page .'.css'])
 
+    <link rel="icon" href="{{ asset('assets/icon.png')}}">
     <title>{{ $title }}</title>
 </head>
 <body>

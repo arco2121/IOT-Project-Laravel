@@ -1,0 +1,21 @@
+@font-face {
+    src: url("../font/Fredoka.ttf");
+    font-family: "Fredoka";
+    font-variant: normal;
+
+    font-display: block;
+    font-stretch: normal;
+}
+
+.font_bold {
+    font-family: "Fredoka", serif;
+    font-weight: bold;
+}
+.font_normal {
+    font-family: "Fredoka", serif;
+    font-weight: normal;
+}
+.font_light {
+    font-family: "Fredoka", serif;
+    font-weight: lighter;
+}

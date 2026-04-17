@@ -1,0 +1,9 @@
+/*INPUT BOX*/
+
+textarea {
+    width: 40vw;
+    resize: none;
+    height: 20vh;
+    min-width: 300px;
+    min-height: 250px;
+}
