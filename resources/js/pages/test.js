@@ -2,7 +2,7 @@ import { echo } from "../echo.js";
 
 document.getElementById('messagemqtt').addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    const message = document.getElementById("message").value;
     try {
         const response = await fetch('/sendMqtt', {
             method: 'POST',
@@ -16,25 +16,19 @@ document.getElementById('messagemqtt').addEventListener('submit', async (e) => {
 
         const data = await response.json();
 
-        if(data.ok) {
+        if(data.ok)
             alert("Messaggio inviato correttamente");
-        } else {
+        else
             alert("Errore");
-        }
-
     } catch (error) {
         console.error(error);
         alert(error.message)
     }
 });
 
-
 echo.channel('esp32')
     .listen('MqttMessageReceived', (data) => {
-
-        console.log("Message");
-        let { topic, message } = data;
-        message = JSON.parse(message);
-
+        const { topic, message } = data;
         const str = "Topic '" + topic + "' => " + message
+        console.log(str);
     });

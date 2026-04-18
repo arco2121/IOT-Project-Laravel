@@ -42,11 +42,7 @@ class SubscribeToTopic extends Command
         //$mqtt = MQTT::connection();
 
         $mqtt->subscribe('esp32/dati', function(string $topic, string $message) {
-
-            echo sprintf('Received message on topic [%s]: %s', $topic, $message);
-
             broadcast(new MqttMessageReceived($topic, $message));
-
         }, 0);
 
         $mqtt->loop(true);

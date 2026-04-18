@@ -11,15 +11,15 @@ class MqttController extends Controller
     {
         $message = $request->input('message');
 
-        $topic = 'laravel/dati';
-        $message = json_encode([
+        $topic = 'esp32/comandi';
+        $message = [
             'text' => $message,
             'timestamp' => now()
-        ]);
+        ];
 
         $mqtt = MQTT::connection();
 
-        $mqtt->publish($topic, $message, 0);
+        $mqtt->publish($topic, $message['text'], 0);
 
         // eventualmente broadcast/evento
         return response()->json(['ok' => true]);
