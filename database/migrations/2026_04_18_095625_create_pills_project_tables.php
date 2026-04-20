@@ -17,7 +17,23 @@ return new class extends Migration
             $table->enum('role', ['patient', 'doctor', 'family'])->default('patient');
             $table->foreignId('doctor_id')->nullable()->constrained('users')->onDelete('set null');
             $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
         });
 
         // 2. Tabella MEDICINES
@@ -67,5 +83,7 @@ return new class extends Migration
         Schema::dropIfExists('data');
         Schema::dropIfExists('medicines');
         Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
     }
 };
