@@ -1,5 +1,5 @@
 <div class="column padding_orizontal_20 padding_vertical_20 min_height">
-    <h1 class="text_center font_bold">Gestione Prescrizioni IoT</h1>
+    <h1 class="text_center font_bold">Gestione Prescrizioni</h1>
 
     <form action="{{ route('prescriptions.store') }}" method="POST">
         @csrf

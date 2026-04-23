@@ -21,14 +21,12 @@ class PrescriptionController extends Controller
         $page = "dashboards.prescrizioni"; // Questo caricherà 'resources/css/test.css' (come visto nel tuo codice)
         $params = [];   // Un array vuoto per ora, per evitare l'errore undefined
 
-        return view('layouts.app', [
+        return renderPage('dashboards.prescrizioni', [
             'users' => User::all(),
             'medicines' => Medicine::all(),
             'days' => ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'],
             'times' => ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
             'title' => "Gestione Prescrizioni",
-            'page' => "dashboards.prescrizioni", // Questo dice al layout cosa includere
-            'params' => []
         ]);
     }
 

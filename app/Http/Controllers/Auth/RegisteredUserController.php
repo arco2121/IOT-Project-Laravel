@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'username' => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'role'     => ['required', 'string', 'in:patient,doctor,family'], // Validiamo il ruolo
+            'role'     => ['required', 'string', 'in:paziente,medico,famiglia'], // Validiamo il ruolo
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -53,12 +53,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // 3. Reindirizzamento dinamico basato sul ruolo scelto
-        if ($user->role === 'doctor') {
-            return redirect('/medico');
-        } elseif ($user->role === 'family') {
-            return redirect('/familiare');
-        }
-
-        return redirect('/paziente');
+        return redirect('/dashboard');
     }
 }

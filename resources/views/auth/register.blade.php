@@ -35,9 +35,9 @@
             <div class="column full_width gap_5">
                 <label for="role">Tipo di Utente</label>
                 <select id="role" name="role" required class="full_width">
-                    <option value="patient">Paziente</option>
-                    <option value="doctor">Medico</option>
-                    <option value="family">Familiare</option>
+                    <option value="paziente">Paziente</option>
+                    <option value="medico">Medico</option>
+                    <option value="famiglia">Familiare</option>
                 </select>
             </div>
 

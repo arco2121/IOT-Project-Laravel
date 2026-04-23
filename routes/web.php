@@ -8,7 +8,7 @@ use App\Http\Middleware\CheckRole;
 use App\Models\Medicine;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => renderPage("index", ['title' => 'Home']));
+Route::get('/', fn() => renderPage("index", ['title' => 'IOT Project']));
 Route::get('/test', fn() => renderPage("test", ['title' => 'Test MQTT']));
 
 Route::post('/sendMqtt', [MqttController::class, 'send']);
@@ -20,12 +20,12 @@ Route::middleware('auth')->group(function () {
         return redirect('/dashboard-' . auth()->user()->role);
     })->name('dashboard');
 
-    Route::middleware(CheckRole::class . ':patient')->group(function () {
-        Route::get('/dashboard-patient', fn() => renderPage("dashboards.dashboard_paziente", ['title' => 'Dashboard Paziente']))
-            ->name('dashboard-patient');
+    Route::middleware(CheckRole::class . ':paziente')->group(function () {
+        Route::get('/dashboard-paziente', fn() => renderPage("dashboards.dashboard_paziente", ['title' => 'Dashboard Paziente']))
+            ->name('dashboard-paziente');
     });
 
-    Route::middleware(CheckRole::class . ':doctor')->group(function () {
+    Route::middleware(CheckRole::class . ':medico')->group(function () {
         Route::get('/dashboard-medico', function () {
 
             $medico = auth()->user();
@@ -41,11 +41,11 @@ Route::middleware('auth')->group(function () {
             ]);
         })->name('dashboard-medico');
 
-        Route::get('/dashboard/prescriptions', [PrescriptionController::class, 'index'])->name('prescriptions.index');
-        Route::post('/dashboard/prescriptions', [PrescriptionController::class, 'store'])->name('prescriptions.store');
+        Route::get('/dashboard/prescrizioni', [PrescriptionController::class, 'index'])->name('prescriptions.index');
+        Route::post('/dashboard/prescrizioni', [PrescriptionController::class, 'store'])->name('prescriptions.store');
     });
 
-    Route::middleware(CheckRole::class . ':family')->group(function () {
+    Route::middleware(CheckRole::class . ':famiglia')->group(function () {
         Route::get('/dashboard-famiglia', fn() => renderPage("dashboards.dashboard_paziente", ['title' => 'Dashboard Famiglia']))
             ->name('dashboard-famiglia');
     });
