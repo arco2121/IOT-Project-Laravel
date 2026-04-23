@@ -26,6 +26,7 @@ document.getElementById('messagemqtt').addEventListener('submit', async (e) => {
     }
 });
 
+setInterval(() => document.getElementById("status").innerText = echo.connectionStatus(), 1000);
 echo.channel('esp32')
     .listen('MqttMessageReceived', (data) => {
         const { topic, message } = data;

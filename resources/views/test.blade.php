@@ -5,6 +5,7 @@
     </div>
 
     <div class="column vertical_center full_width">
+        <h5>Stato connessione: <p id="status">Disconnected</p></h5>
         <form class="column gap_20 padding_vertical_15 end box_focus_mode padding_orizontal_10 box" id="messagemqtt">
             @csrf
             <textarea id="message" placeholder="Scrivi qualcosa..." required></textarea>
