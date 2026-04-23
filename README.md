@@ -4,6 +4,7 @@
 ## Install
 
 - Clone project
+- Run mysql on xAMP if you have it
 - Run composer update and install and run npm install, or just 'npm run build'
 - Copy the .envXample as .env and copy the following extra config
 - Use this as the MQTT config in the .env :
