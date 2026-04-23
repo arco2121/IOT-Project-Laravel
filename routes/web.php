@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\PrescriptionController;
 /*
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,10 +22,12 @@ require_once "functions.php";
 
 use App\Http\Controllers\MqttController;
 use Illuminate\Support\Facades\Route;
-
+Route::get('/dashboard/prescriptions', [PrescriptionController::class, 'index'])->name('prescriptions.index');
+Route::post('/dashboard/prescriptions', [PrescriptionController::class, 'store'])->name('prescriptions.store');
 Route::get('/', fn() => renderPage("index"));
 Route::get('/login', fn() => renderPage("login"));
 Route::get('/test', fn() => renderPage("test"));
+
 
 
 Route::post('/sendMqtt', [MqttController::class, 'send']);
