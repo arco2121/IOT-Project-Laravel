@@ -28,3 +28,5 @@ export let env = fetchEnv();
 
 fromServer = Object.freeze(fromServer);
 env = Object.freeze(env);
+
+console.log(env)
